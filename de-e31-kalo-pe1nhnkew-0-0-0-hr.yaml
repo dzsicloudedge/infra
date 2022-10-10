@@ -1,0 +1,48 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: de-e31-kalo-pe1nhnkew-0-0-0-hr
+  namespace: default
+spec:
+  chart:
+    spec:
+      chart: ./de-e31-kalo-pe1nhnkew-0-0-0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: GitRepository
+        name: de-e31-kalo-pe1nhnkew-0-0-0-source
+  interval: 5m0s
+  releaseName: de-e31-kalo-pe1nhnkew-0-0-0
+  values:
+    affinity: {}
+    autoscaling:
+      enabled: false
+      maxReplicas: 100
+      minReplicas: 1
+      targetCPUUtilizationPercentage: 80
+    image:
+      pullPolicy: IfNotPresent
+      repository: nginx
+    imagePullSecrets: []
+    ingress:
+      annotations: {}
+      enabled: false
+      hosts:
+      - host: chart-example.local
+        paths: []
+      tls: []
+    nodeSelector: {}
+    podAnnotations: {}
+    podSecurityContext: {}
+    replicaCount: 1
+    resources: {}
+    securityContext: {}
+    service:
+      port: 80
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      create: true
+    tolerations: []
+
